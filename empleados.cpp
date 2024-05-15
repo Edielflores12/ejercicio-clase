@@ -45,3 +45,52 @@ int main()
     return 0;
 
 }
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    const int MAX_LEVEL = 25;
+    const int MIN_LEVEL = 1;
+    int currentLevel = 1;
+    int targetLevel;
+    
+    while (true) {
+        cout << "Actualmente está en el nivel " << currentLevel << "." << endl;
+        cout << "Ingrese el nivel al que desea ir (1-25) o 0 para salir: ";
+        cin >> targetLevel;
+
+        if (targetLevel == 0) {
+            break;
+        }
+
+        if (targetLevel < MIN_LEVEL || targetLevel > MAX_LEVEL) {
+            cout << "Nivel inválido. Por favor, ingrese un nivel entre 1 y 25." << endl;
+            continue;
+        }
+
+        if (targetLevel == currentLevel) {
+            cout << "Ya se encuentra en el nivel " << currentLevel << "." << endl;
+        } else if (targetLevel > currentLevel) {
+            while (currentLevel < targetLevel) {
+                cout << "Subiendo... Nivel " << ++currentLevel << endl;
+            }
+        } else {
+            while (currentLevel > targetLevel) {
+                cout << "Bajando... Nivel " << --currentLevel << endl;
+            }
+        }
+
+        cout << "Ha llegado al nivel " << currentLevel << "." << endl;
+        if (currentLevel == MIN_LEVEL) {
+            cout << "Puede subir." << endl;
+        } else if (currentLevel == MAX_LEVEL) {
+            cout << "Puede bajar." << endl;
+        } else {
+            cout << "Puede subir o bajar." << endl;
+        }
+    }
+
+    cout << "Saliendo del programa de simulación de ascensor." << endl;
+    return 0;
+}
